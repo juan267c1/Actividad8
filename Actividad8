@@ -1,0 +1,18 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Actividad8 {
+
+    public static void main(String [] args){
+        Deck deck = new Deck();
+
+        System.out.println(deck.deck.toString());
+        deck.shuffle();
+        System.out.println(deck.deck.toString());
+        deck.head();
+        deck.pick();
+        System.out.println(deck.hand().toString());
+        System.out.println(deck.deck.toString());
+
+    }
+}
