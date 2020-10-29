@@ -1,18 +1,42 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Actividad8 {
 
-    public static void main(String [] args){
+    public static void main(String [] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader (System.in));
         Deck deck = new Deck();
+        boolean menuOpc = true;
+        String input;
 
-        System.out.println(deck.deck.toString());
-        deck.shuffle();
-        System.out.println(deck.deck.toString());
-        deck.head();
-        deck.pick();
-        System.out.println(deck.hand().toString());
-        System.out.println(deck.deck.toString());
+        do {
+            System.out.println("\nBienvenido a Poker!\nSelecciona una opción:\n1 Mezclar deck\n2 Sacar una carta" +
+                    "\n3 Carta al azar\n4 Generar una mano de 5 cartas\n0 Salir\n");
+            input = reader.readLine();
+            if(isInt(input) == true){
+                if(Integer.parseInt(input) < 5 && Integer.parseInt(input) > -1){
+                    if(Integer.parseInt(input) == 1) deck.shuffle();
+                    if(Integer.parseInt(input) == 2) deck.head();;
+                    if(Integer.parseInt(input) == 3) deck.pick();;
+                    if(Integer.parseInt(input) == 4) System.out.println(deck.hand().toString());;
+                    if(Integer.parseInt(input) == 0) System.exit(0);
+                }
+                if(Integer.parseInt(input) >= 5 || Integer.parseInt(input) <= -1){
+                    System.err.println("\nError: Debes introducir un numero valido\n");
+                }
+            }
+        }while(menuOpc == true);
+    }
+    public static boolean isInt(String input){
+        try {
+            int i = Integer.parseInt(input);
+            return true;
+        }
 
+        catch(NumberFormatException er) {
+            System.err.println("\nError: Debes introducir un numero valido\n");
+            return false;
+        }
     }
 }
