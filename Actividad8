@@ -14,6 +14,15 @@ public class Actividad8 {
             System.out.println("\nBienvenido a Poker!\nSelecciona una opción:\n1 Mezclar deck\n2 Sacar una carta" +
                     "\n3 Carta al azar\n4 Generar una mano de 5 cartas\n0 Salir\n");
             input = reader.readLine();
+            
+            if(input>=5){
+            throw new Exception ("Error Por favor de seleccionar una de las opciones validas\n");   
+            }
+            
+            if(deck.deck.isEmpty==true){
+            throw new Exception("Se ha agotado las cartas ");
+            }
+            
             if(isInt(input) == true){
                 if(Integer.parseInt(input) < 5 && Integer.parseInt(input) > -1){
                     if(Integer.parseInt(input) == 1) deck.shuffle();
